@@ -10,18 +10,18 @@ keywords_path: 'https://github.com/jakob-ra/cc-downloader/raw/main/keywords.csv'
 url_keywords_path: 'https://github.com/jakob-ra/cc-downloader/raw/main/url_keywords.csv' # additionally include subpages with these keywords in the url, specify None if not needed
 # note that both keyword files have to accessible from the container so e.g. somewhere in s3 or github (not local)
 
-# output paths
+## output paths
 output_bucket: 'cc-extract' # bucket to store the results
 index_output_path: 'urls_merged_cc' # path in output_bucket to store the index results
 result_output_path: 'cc-download' # path in output_bucket to store the downloads in batches
 
-# download settings
+## download settings
 crawls: # crawls to include (can be multiple), for list see https://commoncrawl.org/the-data/get-started/
   - 'CC-MAIN-2020-24'
 n_subpages_per_domain: 10 # maximum number of subpages to download per domain (downloads the n_subpages_per_domain subpages with the shortest url)
 limit_pages_url_keywords: 100 # maximum number of subpages containing a keyword from the url keyword list to download per domain
 
-# batch settings
+## batch settings
 image_name: 'public.ecr.aws/r9v1u7o6/cc-download:latest' # docker image to use for the batch job
 batch_size: 5000 # number of subpages to download per batch
 retry_attempts: 3 # number of times to retry a failed download batch
