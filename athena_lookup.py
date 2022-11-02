@@ -297,14 +297,6 @@ class Athena_lookup():
 
         self.input_table_length = pd.read_csv(input_table_length_location).values[0][0]
 
-
-    # def save_table_as_csv(self):
-    #     query = f"""SELECT * FROM cc_merged_to_download"""
-    #
-    #     self.download_table_location,_  = self.execute_query(query)
-
-
-
     def run_lookup(self):
         self.drop_all_tables()
         self.create_url_list_table()
@@ -318,57 +310,3 @@ class Athena_lookup():
         print(f'The results contain {self.download_table_length} subpages from {self.n_unique_hosts}'
               f' unique hostnames.')
         print(f'Matched {self.n_unique_hosts/self.input_table_length} of the input domains to at least one subpage.')
-
-
-
-
-
-# awsparams['query'] = 'SELECT * FROM ccindex limit 10;'
-#
-# location, result = athena_query.query_results(client, aws_params)
-#
-#
-#
-# res = client.start_query_execution(QueryString=awsparams['query'],
-#                                    QueryExecutionContext={'Database': awsparams['database'], 'Catalog': awsparams['catalog']},
-#                                    ResultConfiguration={'OutputLocation': 's3://' + awsparams['bucket'] + '/' + awsparams['path']})
-#
-# response = client.get_table_metadata(
-#     CatalogName=awsparams['catalog'],
-#     DatabaseName=awsparams['database'],
-#     TableName='ccindex'
-# )
-#
-# results = client.get_query_results(QueryExecutionId=res)
-
-        # query = f"""create table cc_merged_to_download as select url,
-        #             url_host_name,
-        #             url_host_registered_domain,
-        #             warc_filename,
-        #             warc_record_offset,
-        #             warc_record_end,
-        #             crawl
-        #             from (
-        #                 select url,
-        #                 url_host_name,
-        #                 url_host_registered_domain,
-        #                 warc_filename,
-        #                 warc_record_offset,
-        #                 warc_record_end,
-        #                 crawl,
-        #                 row_number() over (partition by url_host_name order by length(url) asc) as subpage_rank
-        #                 from urls_merged_cc) ranks
-        #             where subpage_rank <= {self.n_subpages}
-        #
-        #             UNION
-        #
-        #             (SELECT url,
-        #                     url_host_name,
-        #                     url_host_registered_domain,
-        #                     warc_filename,
-        #                     warc_record_offset,
-        #                     warc_record_end,
-        #                     crawl
-        #                     FROM urls_merged_cc
-        #             WHERE """ + ' OR '.join([f"url LIKE '%{keyword}%'" for keyword in self.url_keywords])\
-        #             + f'LIMIT {self.limit_pages_url_keywords})'
