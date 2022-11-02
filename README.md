@@ -1,5 +1,36 @@
+<a name="readme-top"></a>
+
 # CommonCrawl Downloader
 
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
+  </ol>
+</details>
+
+
+
+<!-- ABOUT THE PROJECT -->
 ## Purpose
 
 [CommonCrawl](https://commoncrawl.org/the-data/get-started/) is a nonprofit organization that crawls the web and freely
@@ -19,6 +50,8 @@ output files can then be downloaded or further processed. The output files have 
 By using Fargate spot instances the processing is cheap (in case a task is interrupted, it is just re-attempted). Also
 transfer speed is maximal because we access the CommonCrawl data from the same AWS region where it is hosted.
 
+
+<!-- How to run -->
 ## How to run
 
 ### AWS Permissions & Authentication
@@ -95,11 +128,79 @@ format is CRAWL-NAME-YYYY-WW – The name of the crawl and year + week it was in
 crawls you want to search under config.yml > crawls. *Warning:* Searching many crawls can quickly lead to considerable
 costs, see estimated costs.
 
-### Estimated costs
+### Run locally
+
+- To clone the repo:
+  ```sh
+  git clone https://github.com/jakob-ra/cc-download.git
+  ```
+  
+- Install requirements:
+   ```sh
+   pip install -r requirements.txt
+   ```
+   
+- Configure all input parameters using config.yml
+
+- Run:
+   ```sh
+   python main.py
+   ```
+ 
+## Estimated costs
 The costs of querying Athena for each crawl you want to search are relatively fixed because even when providing a small URL list, the entire CommonCrawl index file has to be scanned for the inner join operation. These costs will be around 0.30$-0.50$ per crawl, independent of the number of URLs you provide.
 
 The costs of downloading and processing the raw webpages depend on the number of URLs you provide and the
 number of subpages you want to download for each URL. The cost is around 0.33$ per million subpages.
+
+
+### Installation
+
+1. Get a free API Key at [https://example.com](https://example.com)
+2. Clone the repo
+   ```sh
+   git clone https://github.com/github_username/repo_name.git
+   ```
+3. Install NPM packages
+   ```sh
+   npm install
+   ```
+4. Enter your API in `config.js`
+   ```js
+   const API_KEY = 'ENTER YOUR API';
+   ```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+<!-- USAGE EXAMPLES -->
+## Usage
+
+Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+
+_For more examples, please refer to the [Documentation](https://example.com)_
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+<!-- LICENSE -->
+## License
+
+Distributed under the MIT License. See `LICENSE.txt` for more information.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+<!-- CONTACT -->
+## Contact
+
+Jakob Rauch - j.m.rauch@vu.nl
+
+Project Link: [https://github.com/jakob-ra/cc-downloader](https://github.com/jakob-ra/cc-downloader)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
