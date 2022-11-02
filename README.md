@@ -21,7 +21,8 @@
         <li><a href="#run">How to run</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Estimated costs</a></li>
+    <li><a href="#costs">Estimated costs</a></li>
+    <li><a href="#runtime">Estimated runtime</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
