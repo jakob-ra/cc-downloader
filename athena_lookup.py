@@ -108,7 +108,7 @@ class Athena_lookup():
                 else:
                     print(
                         f'Time elapsed: {execution_time/1000:.2f}s. Data scanned: '
-                        f'{convert_file_size(data_scanned)}. Total cost: {self.total_cost + cost:.2f}$.',
+                        f'{convert_file_size(data_scanned)}. Total lookup cost: {self.total_cost + cost:.2f}$.',
                         end='\r')
                     time.sleep(1)
 
