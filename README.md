@@ -171,7 +171,7 @@ number of subpages you want to download for each URL. The cost is around 0.33$ p
 
 ## Estimated runtime
 
-Querying the CommonCrawl index usually takes around 2 minutes per Crawl. The download and processing of ten million subpages takes around ten minutes.
+Querying the CommonCrawl index usually takes around 2 minutes per Crawl. The download and processing of ten million subpages takes around ten minutes. For fewer subpages, you can speed up the process by reducing config.yml > batch_size.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
