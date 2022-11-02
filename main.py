@@ -27,17 +27,24 @@ if __name__ == '__main__':
     }
     url_keywords = pd.read_csv(cfg['url_keywords_path'], header=None, usecols=[0]).squeeze().tolist()
 
-    athena_lookup = Athena_lookup(aws_params, cfg['s3path_url_list'], cfg['crawls'],
-                                  cfg['n_subpages_per_domain'], url_keywords, limit_cc_table=None,
-                                  keep_ccindex=True, limit_pages_url_keywords=cfg['limit_pages_url_keywords'])
-    athena_lookup.run_lookup()
+    answer = input(f'Estimated lookup costs: {0.2*len(cfg["crawls"]):.2f}$-{0.5*len(cfg["crawls"]):.2f} $. Continue? [y]/[n]').lower()
+    if answer == 'y':
+        athena_lookup = Athena_lookup(aws_params, cfg['s3path_url_list'], cfg['crawls'],
+                                      cfg['n_subpages_per_domain'], url_keywords, limit_cc_table=None,
+                                      keep_ccindex=True, limit_pages_url_keywords=cfg['limit_pages_url_keywords'])
+        athena_lookup.run_lookup()
+    else:
+        raise Exception('Lookup aborted.')
 
     ## run batch job
     req_batches = int(athena_lookup.download_table_length//cfg["batch_size"] + 1)
     print(f'Splitting {athena_lookup.download_table_length} subpages into {req_batches} batches of size {cfg["batch_size"]}.')
-    print(f'Estimated costs: {0.33*athena_lookup.download_table_length*10-6}$.')
+    answer = input(f'Estimated download costs: {0.33*athena_lookup.download_table_length*10**-6:.2f}$. Continue? [y]/[n]').lower()
 
-    aws_batch = AWSBatch(req_batches, cfg["batch_size"], cfg['output_bucket'], result_output_path,
-                         cfg['keywords_path'], cfg['image_name'], cfg['batch_role'], retry_attempts=cfg['retry_attempts'],
-                         attempt_duration=cfg['attempt_duration'], keep_compute_env=True, keep_job_queue=True)
-    aws_batch.run()
+    if answer == 'y':
+        aws_batch = AWSBatch(req_batches, cfg["batch_size"], cfg['output_bucket'], result_output_path,
+                             cfg['keywords_path'], cfg['image_name'], cfg['batch_role'], retry_attempts=cfg['retry_attempts'],
+                             attempt_duration=cfg['attempt_duration'], keep_compute_env=True, keep_job_queue=True)
+        aws_batch.run()
+    else:
+        raise Exception('Download batch job aborted.')
