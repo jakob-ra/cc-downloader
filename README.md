@@ -110,8 +110,11 @@ There are often many hundred subpages per domain and downloading and processing 
 have two ways of selecting a subset of subpages per domain:
 
 - Downloading the n_subpages subpages with the shortest URLs. For instance, if n_subpages is 2 and the crawled subpages
-  have the URLs 'apple.com/store', 'apple.com/contact', and 'apple.com/iphone-14/switch/, only 'apple.com/store' and '
-  apple.com/contact' will be downloaded and processed.
+  have the URLs 
+  > 'apple.com/store', 'apple.com/contact', 'apple.com/iphone-14/switch/
+  then only 
+  > 'apple.com/store', 'apple.com/contact' 
+  will be downloaded and processed.
 - Selecting subpages that contain at least one of a list of keywords in their website address. For example, if "covid"
   is in the url_keywords list, the subpage with the URL:'apple.com/covid-19' will be downloaded. However, you might
   still get too many subpages containing such keywords, in which case you can limit the number of such subpages to
