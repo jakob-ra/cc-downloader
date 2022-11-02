@@ -6,8 +6,8 @@ batch_role: 'arn:aws:iam::425352751544:role/cc-download' # role to use for the b
 
 # input paths
 s3path_url_list: 's3://cc-extract/dataprovider_all_months/only_urls/' # folder where url list is stored, starts with 's3://'
-keywords_path: 'https://github.com/jakob-ra/cc-download/raw/main/keywords.csv' # kewywords to search for in the webpages
-url_keywords_path: 'https://github.com/jakob-ra/cc-download/raw/main/url_keywords.csv' # additionally include subpages with these keywords in the url, specify None if not needed
+keywords_path: 'https://github.com/jakob-ra/cc-downloader/raw/main/keywords.csv' # kewywords to search for in the webpages
+url_keywords_path: 'https://github.com/jakob-ra/cc-downloader/raw/main/url_keywords.csv' # additionally include subpages with these keywords in the url, specify None if not needed
 
 # output paths
 output_bucket: 'cc-extract' # bucket to store the results

@@ -2,7 +2,7 @@ from athena_lookup import Athena_lookup
 import pandas as pd
 import os
 import s3fs
-from aws_config import aws_config_credentials
+from aws_config import aws_configure_credentials
 from aws_batch import AWSBatch
 import yaml
 
