@@ -169,6 +169,12 @@ number of subpages you want to download for each URL. The cost is around 0.33$ p
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+## Estimated runtime
+
+Querying the CommonCrawl index usually takes around 2 minutes per Crawl. The download and processing of ten million subpages takes around ten minutes.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 <!-- LICENSE -->
 ## License
 
