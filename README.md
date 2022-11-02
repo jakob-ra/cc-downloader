@@ -96,12 +96,10 @@ crawls you want to search under config.yml > crawls. *Warning:* Searching many c
 costs, see estimated costs.
 
 ### Estimated costs
-The costs of querying Athena for each crawl you want to search are somewhat fixed, that is, they will be around 0.30$-0.50$ per
-crawl, independent of the number of URLs you provide.
+The costs of querying Athena for each crawl you want to search are relatively fixed because even when providing a small URL list, the entire CommonCrawl index file has to be scanned for the inner join operation. These costs will be around 0.30$-0.50$ per crawl, independent of the number of URLs you provide.
 
 The costs of downloading and processing the raw webpages depend on the number of URLs you provide and the
-number of subpages you want to download for each URL. The costs are estimated as follows: 
-1307960 subpages cost
+number of subpages you want to download for each URL. The cost is around 0.33$ per million subpages.
 
 
 
