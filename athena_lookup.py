@@ -7,7 +7,7 @@ import boto3
 
 class Athena_lookup():
     def __init__(self, aws_params: dict, s3path_url_list, crawls: list, n_subpages: int, url_keywords: list,
-                 athena_price_per_tb=5, wait_seconds=3600, limit_cc_table=10000, keep_ccindex=False,
+                 athena_price_per_tb=5, wait_seconds=3600, limit_cc_table=None, keep_ccindex=False,
                  limit_pages_url_keywords=100):
         self.athena_client = boto3.client('athena')
         self.s3_client = boto3.client('s3')
